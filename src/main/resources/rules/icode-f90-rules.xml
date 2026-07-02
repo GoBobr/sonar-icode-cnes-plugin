@@ -785,4 +785,645 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<description>You must add an header to this file</description>
 
 	</rule>
+
+	<rule>
+		<key>EUM.BLOC.NamedLoops</key>
+		<name>EUM.BLOC.NamedLoops</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.BLOC.NamedLoops</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.BLOC.WhereElse</key>
+		<name>EUM.BLOC.WhereElse</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.BLOC.WhereElse</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.DESIGN.ModuleStructure</key>
+		<name>EUM.DESIGN.ModuleStructure</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.DESIGN.ModuleStructure</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.DESIGN.NoGlobalVars</key>
+		<name>EUM.DESIGN.NoGlobalVars</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.DESIGN.NoGlobalVars</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.DESIGN.OneUnitPerFile</key>
+		<name>EUM.DESIGN.OneUnitPerFile</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.DESIGN.OneUnitPerFile</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.DESIGN.ProgramStructure</key>
+		<name>EUM.DESIGN.ProgramStructure</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.DESIGN.ProgramStructure</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.DESIGN.SubroutineStructure</key>
+		<name>EUM.DESIGN.SubroutineStructure</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.DESIGN.SubroutineStructure</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.FILE.HeaderContent</key>
+		<name>EUM.FILE.HeaderContent</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.FILE.HeaderContent</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.ArgOrder</key>
+		<name>EUM.INST.ArgOrder</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.ArgOrder</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.ArgTypeDecl</key>
+		<name>EUM.INST.ArgTypeDecl</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.ArgTypeDecl</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.Backspace</key>
+		<name>EUM.INST.Backspace</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.Backspace</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.BlockData</key>
+		<name>EUM.INST.BlockData</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.BlockData</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.CharLen</key>
+		<name>EUM.INST.CharLen</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.CharLen</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.CompilerExt</key>
+		<name>EUM.INST.CompilerExt</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.CompilerExt</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.Continuation</key>
+		<name>EUM.INST.Continuation</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.Continuation</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.Continue</key>
+		<name>EUM.INST.Continue</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.Continue</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.DoubleColon</key>
+		<name>EUM.INST.DoubleColon</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.DoubleColon</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.DummyArgOrder</key>
+		<name>EUM.INST.DummyArgOrder</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.DummyArgOrder</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.EqvOperators</key>
+		<name>EUM.INST.EqvOperators</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.EqvOperators</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.FormatPlacement</key>
+		<name>EUM.INST.FormatPlacement</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.FormatPlacement</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.FormatStmt</key>
+		<name>EUM.INST.FormatStmt</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.FormatStmt</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.FreeFormatRead</key>
+		<name>EUM.INST.FreeFormatRead</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.FreeFormatRead</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.FunctionIntent</key>
+		<name>EUM.INST.FunctionIntent</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.FunctionIntent</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.Namelist</key>
+		<name>EUM.INST.Namelist</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.Namelist</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.NoData</key>
+		<name>EUM.INST.NoData</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.NoData</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.NoLabelledDo</key>
+		<name>EUM.INST.NoLabelledDo</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.NoLabelledDo</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.NoSingleLineWhere</key>
+		<name>EUM.INST.NoSingleLineWhere</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.NoSingleLineWhere</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.NoUnderscoreKind</key>
+		<name>EUM.INST.NoUnderscoreKind</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.NoUnderscoreKind</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.OneVarPerLine</key>
+		<name>EUM.INST.OneVarPerLine</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.OneVarPerLine</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.OptionalAfterMandatory</key>
+		<name>EUM.INST.OptionalAfterMandatory</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.OptionalAfterMandatory</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.OptionalDefault</key>
+		<name>EUM.INST.OptionalDefault</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.OptionalDefault</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.OptionalNamed</key>
+		<name>EUM.INST.OptionalNamed</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.OptionalNamed</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.PercentBlank</key>
+		<name>EUM.INST.PercentBlank</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.PercentBlank</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.PureFunc</key>
+		<name>EUM.INST.PureFunc</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.PureFunc</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.Redundant</key>
+		<name>EUM.INST.Redundant</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.Redundant</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.INST.StringDim</key>
+		<name>EUM.INST.StringDim</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.INST.StringDim</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.MET.MaxArguments</key>
+		<name>EUM.MET.MaxArguments</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.MET.MaxArguments</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.MET.MaxAttributes</key>
+		<name>EUM.MET.MaxAttributes</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.MET.MaxAttributes</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.MET.MaxContinuation</key>
+		<name>EUM.MET.MaxContinuation</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.MET.MaxContinuation</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.MET.MaxProcedures</key>
+		<name>EUM.MET.MaxProcedures</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.MET.MaxProcedures</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.NAME.Constants</key>
+		<name>EUM.NAME.Constants</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.NAME.Constants</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.NAME.FileExt</key>
+		<name>EUM.NAME.FileExt</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.NAME.FileExt</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.NAME.FormatLabels</key>
+		<name>EUM.NAME.FormatLabels</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.NAME.FormatLabels</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.NAME.IdChars</key>
+		<name>EUM.NAME.IdChars</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.NAME.IdChars</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.NAME.IdFormat</key>
+		<name>EUM.NAME.IdFormat</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.NAME.IdFormat</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.NAME.IdLength</key>
+		<name>EUM.NAME.IdLength</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.NAME.IdLength</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.NAME.IdScope</key>
+		<name>EUM.NAME.IdScope</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.NAME.IdScope</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.NAME.ModuleName</key>
+		<name>EUM.NAME.ModuleName</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.NAME.ModuleName</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.NAME.PrivateFormat</key>
+		<name>EUM.NAME.PrivateFormat</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.NAME.PrivateFormat</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.NAME.ProgramName</key>
+		<name>EUM.NAME.ProgramName</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.NAME.ProgramName</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.NAME.PublicFormat</key>
+		<name>EUM.NAME.PublicFormat</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.NAME.PublicFormat</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.PRES.BlankLines</key>
+		<name>EUM.PRES.BlankLines</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.PRES.BlankLines</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.PRES.BlockAlign</key>
+		<name>EUM.PRES.BlockAlign</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.PRES.BlockAlign</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.PRES.CommentBlock</key>
+		<name>EUM.PRES.CommentBlock</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.PRES.CommentBlock</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.PRES.CommentPos</key>
+		<name>EUM.PRES.CommentPos</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.PRES.CommentPos</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.PRES.Doxygen</key>
+		<name>EUM.PRES.Doxygen</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.PRES.Doxygen</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.PRES.IndentLevel</key>
+		<name>EUM.PRES.IndentLevel</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.PRES.IndentLevel</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.PRES.LabelJustify</key>
+		<name>EUM.PRES.LabelJustify</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.PRES.LabelJustify</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.PRES.NoCommentMultiLine</key>
+		<name>EUM.PRES.NoCommentMultiLine</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.PRES.NoCommentMultiLine</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.PRES.NoEmptyComment</key>
+		<name>EUM.PRES.NoEmptyComment</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.PRES.NoEmptyComment</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.PRES.NoEndLineComment</key>
+		<name>EUM.PRES.NoEndLineComment</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.PRES.NoEndLineComment</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.PRES.NoTabs</key>
+		<name>EUM.PRES.NoTabs</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.PRES.NoTabs</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.PROJECT.HeaderContent</key>
+		<name>EUM.PROJECT.HeaderContent</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.PROJECT.HeaderContent</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
+	<rule>
+		<key>EUM.TYPE.PrivateInType</key>
+		<name>EUM.TYPE.PrivateInType</name>
+		<internalKey>*</internalKey>
+		<description>EUM Fortran Coding Rule: EUM.TYPE.PrivateInType</description>
+		<severity>INFO</severity>
+		<status>READY</status>
+		<type>CODE_SMELL</type>
+		<remediationFunctionBaseEffort>30min</remediationFunctionBaseEffort>
+	</rule>
 </icodelint-rules>
