@@ -790,7 +790,16 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.BLOC.NamedLoops</key>
 		<name>EUM.BLOC.NamedLoops</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.BLOC.NamedLoops</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1490: Named loops</h2>
+<p>Named loops shall be used to aid visual matching of the DO and END DO statements when there are multiple levels of nested loops or when EXIT or CYCLE statements are used.</p>
+<h3>Example</h3>
+<pre>name: DO iVar = iStart, iFinish [,iStep]
+   &lt;statements&gt;
+END DO name</pre>
+<h3>Implementation</h3>
+<p>This rule flags unnamed DO loops when nesting depth is 2 or more, or when EXIT/CYCLE is used inside a DO loop.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -800,7 +809,18 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.BLOC.WhereElse</key>
 		<name>EUM.BLOC.WhereElse</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.BLOC.WhereElse</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1470: WHERE constructs with ELSE WHERE option</h2>
+<p>WHERE constructs with ELSE WHERE options shall have an empty ELSE WHERE option.</p>
+<h3>Example</h3>
+<pre>[name:] WHERE (&lt;condition&gt;)
+  &lt;statements&gt;
+[[ELSE WHERE (&lt;condition&gt;)
+  &lt;statements&gt;]
+ELSE WHERE
+  &lt;statements&gt;]
+END WHERE [name]</pre>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -810,7 +830,25 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.DESIGN.ModuleStructure</key>
 		<name>EUM.DESIGN.ModuleStructure</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.DESIGN.ModuleStructure</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0180: Module files structure</h2>
+<p>Each MODULE shall consist of the following components:</p>
+<ul>
+<li>MODULE xxxx statement</li>
+<li>Software file header</li>
+<li>Module dependencies (with USE statement)</li>
+<li>IMPLICIT NONE statement</li>
+<li>PRIVATE statement</li>
+<li>Definition of PUBLIC elements</li>
+<li>Local variables, constants and types declaration</li>
+<li>Data initialisation</li>
+<li>CONTAINS</li>
+<li>Body of the module, with the codification of all procedures</li>
+<li>END MODULE (full form)</li>
+</ul>
+<h3>Implementation</h3>
+<p>This rule checks for the presence of key required sections: IMPLICIT NONE, PRIVATE, CONTAINS, and END MODULE in full form (not bare END).</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -820,7 +858,13 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.DESIGN.NoGlobalVars</key>
 		<name>EUM.DESIGN.NoGlobalVars</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.DESIGN.NoGlobalVars</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0730: Modules and global variables</h2>
+<p>MODULEs shall not be used for global variables.</p>
+<p>This is bad programming practice and makes maintenance of the source code very difficult.</p>
+<h3>Implementation</h3>
+<p>This rule flags modules that contain variable declarations but no CONTAINS section (i.e., pure data modules with no procedures, which likely indicate global variable misuse).</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -830,7 +874,12 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.DESIGN.OneUnitPerFile</key>
 		<name>EUM.DESIGN.OneUnitPerFile</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.DESIGN.OneUnitPerFile</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0110: Software file content</h2>
+<p>Each programming unit (PROGRAM or MODULE) shall be in a different file.</p>
+<h3>Implementation</h3>
+<p>This rule checks that each file contains only one programming unit (PROGRAM or MODULE). It flags files that contain both a PROGRAM and a MODULE, or more than one MODULE or PROGRAM.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -840,7 +889,24 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.DESIGN.ProgramStructure</key>
 		<name>EUM.DESIGN.ProgramStructure</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.DESIGN.ProgramStructure</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0170: Program files structure</h2>
+<p>Each PROGRAM shall consist of the following components:</p>
+<ul>
+<li>PROGRAM xxxx statement</li>
+<li>Software file header</li>
+<li>Module dependencies (with USE statement)</li>
+<li>IMPLICIT NONE statement</li>
+<li>Local types, variables and constants declarations</li>
+<li>Data initialisation</li>
+<li>Body of the program</li>
+<li>CONTAINS statement (optional)</li>
+<li>Local subroutines and functions (optional)</li>
+<li>END PROGRAM statement (full form)</li>
+</ul>
+<h3>Implementation</h3>
+<p>This rule checks for the presence of key required sections: IMPLICIT NONE and END PROGRAM in full form (not bare END).</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -850,7 +916,56 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.DESIGN.SubroutineStructure</key>
 		<name>EUM.DESIGN.SubroutineStructure</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.DESIGN.SubroutineStructure</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0190: Subroutines and functions content</h2>
+<p>A FORTRAN function or subroutine shall consist of the following:</p>
+<ul>
+<li>Subroutine header</li>
+<li>Subroutine xxxx definition</li>
+<li>Declaration of arguments</li>
+<li>Local definitions</li>
+<li>Executable block</li>
+<li>FORMAT statements</li>
+<li>END SUBROUTINE xxxx statement</li>
+</ul>
+<h3>Example</h3>
+<pre>!-------------------------------------------------------------------------------
+! Name:
+! Purpose:
+! Argument I/O:
+! Returns:
+!-------------------------------------------------------------------------------
+
+SUBROUTINE mySubroutine( in_rX, in_rY )
+
+!---USE statements--------------------------------------
+...
+!---End of USE statements-------------------------------
+
+!---Declaration of arguments----------------------------
+  REAL, INTENT(IN)           :: in_rX
+  REAL, INTENT(IN), OPTIONAL :: in_rY
+  ...
+!---End of declaration of arguments---------------------
+
+!---Declaration of local variables----------------------
+  INTEGER :: iInteger
+  REAL    :: rReal
+...
+!---End of declaration of local variables---------------
+
+!---Executable block------------------------------------
+...
+!---End of executable block-----------------------------
+
+!---Format block----------------------------------------
+...
+!---End of format block---------------------------------
+
+END SUBROUTINE mySubroutine</pre>
+<h3>Implementation</h3>
+<p>This rule checks for the presence of a header before the definition and END SUBROUTINE in full form (not bare END).</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -860,7 +975,28 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.FILE.HeaderContent</key>
 		<name>EUM.FILE.HeaderContent</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.FILE.HeaderContent</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0500: Software file header</h2>
+<p>Each programming unit (PROGRAM or MODULE) shall have a header with, at least, the following components:</p>
+<ul>
+<li>Unique identification of the module concerned</li>
+<li>Unique identification of the file</li>
+<li>Author's name</li>
+<li>Statement of the Copyright ownership of the code</li>
+<li>Description - description of the nature of functions/subroutines in this file</li>
+</ul>
+<h3>Example</h3>
+<pre>!-------------------------------------------------------------------------------
+! Component Name:  component name
+! File: file name (it may be automatically inserted by the code management tool)
+! Author: author name
+! Copyright: EUMETSAT 2015
+! Description: brief description of the purpose of the file content (e.g. class
+!              description)
+!-------------------------------------------------------------------------------</pre>
+<h3>Implementation</h3>
+<p>This rule validates that the file header contains the required fields: Component Name, File, Author, Copyright, and Description.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -870,7 +1006,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.ArgOrder</key>
 		<name>EUM.INST.ArgOrder</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.ArgOrder</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0820: Input / Output order</h2>
+<p>IN parameters shall be passed first, then INOUT parameters, then finally OUT parameters.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -880,7 +1019,12 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.ArgTypeDecl</key>
 		<name>EUM.INST.ArgTypeDecl</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.ArgTypeDecl</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0810: Input / Output declaration</h2>
+<p>All input and output arguments shall have declared data types.</p>
+<h3>Implementation</h3>
+<p>This rule checks that all dummy arguments (from the SUBROUTINE/FUNCTION signature) have an explicit data type declaration in the procedure body.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -890,7 +1034,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.Backspace</key>
 		<name>EUM.INST.Backspace</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.Backspace</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1670: No BACKSPACE</h2>
+<p>BACKSPACE shall not be used.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -900,7 +1047,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.BlockData</key>
 		<name>EUM.INST.BlockData</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.BlockData</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1100: No BLOCK DATA</h2>
+<p>BLOCK DATA shall not be used. Use modules instead.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -910,7 +1060,14 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.CharLen</key>
 		<name>EUM.INST.CharLen</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.CharLen</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1040: Character string variables</h2>
+<p>Character string variables shall use the LEN=[number] attribute.</p>
+<h3>Example</h3>
+<pre>CHARACTER(LEN=128) :: cString</pre>
+<h3>Implementation</h3>
+<p>This rule checks that character variables use the LEN=n attribute, not the *n notation. For example, <code>character(len=10)</code> is OK, but <code>character*10</code> is not.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -920,7 +1077,12 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.CompilerExt</key>
 		<name>EUM.INST.CompilerExt</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.CompilerExt</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1800: Compiler extensions</h2>
+<p>No compiler- or platform-dependent extensions shall be used.</p>
+<h3>Implementation</h3>
+<p>This rule detects the following compiler extension pragmas and non-standard features: <code>!DEC$</code>, <code>!DIR$</code>, <code>!GCC$</code>, <code>BYTE</code>, <code>%VAL</code>, <code>%REF</code>, <code>%LOC</code>.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -930,7 +1092,13 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.Continuation</key>
 		<name>EUM.INST.Continuation</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.Continuation</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1810: Continuation Character</h2>
+<p>The continuation character shall be an ampersand and shall be placed only at the end of each line that is to be continued.</p>
+<h3>Example</h3>
+<pre>1000 FORMAT (1x, 'APLHA', 5x, 'BETA', 5x, 'GAMMA', &
+             5x, 'DELTA')</pre>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -940,7 +1108,12 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.Continue</key>
 		<name>EUM.INST.Continue</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.Continue</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1530: CONTINUE statement</h2>
+<p>CONTINUE shall not be used.</p>
+<h3>Implementation</h3>
+<p>This rule detects standalone CONTINUE statements (not END CONTINUE).</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -950,7 +1123,14 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.DoubleColon</key>
 		<name>EUM.INST.DoubleColon</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.DoubleColon</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1030: Double colon</h2>
+<p>Double colon (::) shall be used to declare a variable (even without attributes).</p>
+<h3>Example</h3>
+<pre>INTEGER :: iIndex</pre>
+<h3>Implementation</h3>
+<p>This rule checks that <code>::</code> is present in all declarations. For example, <code>integer x</code> is a violation; it must be <code>integer :: x</code>.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -960,7 +1140,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.DummyArgOrder</key>
 		<name>EUM.INST.DummyArgOrder</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.DummyArgOrder</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0840: Order of dummy arguments</h2>
+<p>Declaration of dummy arguments shall follow the same order in which they appear in the subroutine or function calling sequence.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -970,7 +1153,13 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.EqvOperators</key>
 		<name>EUM.INST.EqvOperators</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.EqvOperators</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1310: Equivalence operators</h2>
+<p>Logical comparison operators (.EQV., .NEQV.) shall only be used to compare two logical variables. Never compare a logical variable with .TRUE. or .FALSE.</p>
+<p>Use of .EQ. and .NE. on LOGICAL operands is not supported, except via compiler options, which is not recommended except for legacy code (where the behaviour expected by the code is assumed).</p>
+<h3>Implementation</h3>
+<p>This rule checks that .EQV./.NEQV. are not used with .TRUE./.FALSE. literals.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -980,7 +1169,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.FormatPlacement</key>
 		<name>EUM.INST.FormatPlacement</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.FormatPlacement</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1690: FORMAT statement placement</h2>
+<p>FORMAT statements shall be placed at the end of the scope of the corresponding READ or WRITE statements, as described by the rule EUM-FCRule-0190.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -990,7 +1182,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.FormatStmt</key>
 		<name>EUM.INST.FormatStmt</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.FormatStmt</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1680: READ & WRITE associated FORMAT</h2>
+<p>Format in the operations of reading and writing (READ and WRITE) shall use an associated FORMAT statement (rather than format specification directly in the READ or WRITE statement).</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1000,7 +1195,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.FreeFormatRead</key>
 		<name>EUM.INST.FreeFormatRead</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.FreeFormatRead</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1700: Space separated data reading</h2>
+<p>Reading of data shall be based on space separated data and free format READ. The use of formatted data reading should be limited to those cases in which data interpretation cannot be left to the compiler (FORMAT='*').</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1010,7 +1208,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.FunctionIntent</key>
 		<name>EUM.INST.FunctionIntent</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.FunctionIntent</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0930: FUNCTION's calling sequence</h2>
+<p>The calling sequence arguments of a function shall exclusively be of INTENT(IN) type.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1020,7 +1221,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.Namelist</key>
 		<name>EUM.INST.Namelist</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.Namelist</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1860: Do not use NAMELIST</h2>
+<p>NAMELIST shall not be used.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1030,7 +1234,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.NoData</key>
 		<name>EUM.INST.NoData</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.NoData</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1150: No DATA initialization</h2>
+<p>Initialisation with DATA shall be avoided.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1040,7 +1247,14 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.NoLabelledDo</key>
 		<name>EUM.INST.NoLabelledDo</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.NoLabelledDo</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1480: Labelled loops</h2>
+<p>Labelled DO loops shall not be used.</p>
+<h3>Example</h3>
+<pre>      DO label iVar = iStart, iFinish [, iStep]
+         &lt;statements&gt;
+label CONTINUE</pre>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1050,7 +1264,20 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.NoSingleLineWhere</key>
 		<name>EUM.INST.NoSingleLineWhere</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.NoSingleLineWhere</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1460: No single line WHERE</h2>
+<p>Single line WHERE statements shall not be used. Use the form WHERE ... [ELSE WHERE ... ] END WHERE instead.</p>
+<h3>Example</h3>
+<pre>WHERE (&lt;condition&gt;) &lt;statement&gt;    ! WRONG
+
+[name:] WHERE (&lt;condition&gt;)        ! RIGHT
+  &lt;statements&gt;
+[[ELSE WHERE (&lt;condition&gt;)
+  &lt;statements&gt;]
+ELSE WHERE
+  &lt;statements&gt;]
+END WHERE [name]</pre>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1060,7 +1287,14 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.NoUnderscoreKind</key>
 		<name>EUM.INST.NoUnderscoreKind</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.NoUnderscoreKind</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1220: No underscore + kind attribute</h2>
+<p>Qualification of constants and variables by means of underscore + kind attribute shall not be used.</p>
+<h3>Example</h3>
+<pre>DOUBLE PRECISION :: x
+...
+y = x_8    ! Not OK</pre>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1070,7 +1304,12 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.OneVarPerLine</key>
 		<name>EUM.INST.OneVarPerLine</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.OneVarPerLine</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1010: Only one variable declaration per line</h2>
+<p>Only one variable shall be declared per source code statement.</p>
+<h3>Implementation</h3>
+<p>This rule checks that only one variable is declared per <code>::</code> statement. For example, <code>integer :: a, b</code> is a violation.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1080,7 +1319,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.OptionalAfterMandatory</key>
 		<name>EUM.INST.OptionalAfterMandatory</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.OptionalAfterMandatory</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0850: Dummy arguments after non-optional</h2>
+<p>OPTIONAL dummy arguments shall be declared after mandatory dummy arguments, following also the IN, INOUT, OUT orders.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1090,7 +1332,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.OptionalDefault</key>
 		<name>EUM.INST.OptionalDefault</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.OptionalDefault</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0940: OPTIONAL attribute</h2>
+<p>Use of OPTIONAL attribute shall be restricted to the implementation of default parameters. The corresponding calling parameters must be of INTENT(IN) type and a default value must be assigned at the start of the procedure, if the respective actual parameter is not present in the procedure call. They shall appear after mandatory arguments.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1100,7 +1345,18 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.OptionalNamed</key>
 		<name>EUM.INST.OptionalNamed</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.OptionalNamed</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0830: Explicitly identify OPTIONAL arguments</h2>
+<p>OPTIONAL arguments shall be explicitly identified in procedure calls by the name of the dummy argument associated to the name of the actual calling argument.</p>
+<h3>Example</h3>
+<pre>SUBROUTINE mySubroutine( x, y )
+  REAL, INTENT(IN)           :: x
+  REAL, INTENT(IN), OPTIONAL :: y
+  ...
+CALL mySubroutine( myX, y=myY )</pre>
+<h3>Implementation</h3>
+<p>This rule checks same-file procedure calls only (subroutine defined in the same file). Cross-file analysis is a candidate for future improvement.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1110,7 +1366,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.PercentBlank</key>
 		<name>EUM.INST.PercentBlank</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.PercentBlank</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1830: Blank usage with %</h2>
+<p>Blanks shall not be used in identifiers before and after the % record field separator (i.e. DATA%ITEM, not DATA % ITEM).</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1120,7 +1379,12 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.PureFunc</key>
 		<name>EUM.INST.PureFunc</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.PureFunc</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0950: PURE SUBROUTINES & FUNCTIONS</h2>
+<p>In FORTRAN 95, SUBROUTINEs and FUNCTIONs shall have the PURE attribute when possible. It is desirable that subroutines are re-entrant (they have the same behaviour every time they are called).</p>
+<h3>Implementation</h3>
+<p>This rule uses a heuristic: if a FUNCTION has all INTENT(IN) arguments and no external I/O (no READ/WRITE), it should be marked PURE. Note: this may have false negatives as not all side effects can be detected.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1130,7 +1394,22 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.Redundant</key>
 		<name>EUM.INST.Redundant</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.Redundant</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1850: Redundant features</h2>
+<p>The use of the following redundant FORTRAN 90 language features shall not be used:</p>
+<ul>
+<li>The D exponent letter for double precision numbers (e.g. 1.23D-45; use 1.23E-45 instead)</li>
+<li>Common blocks (use modules instead)</li>
+<li>Rational operators .EQ., .NE., .LT., .LE., .GT., .GE. (use ==, /=, &lt;, etc instead)</li>
+<li>CONTINUE statement</li>
+<li>Statement functions</li>
+<li>CHARACTER*(*) declaration</li>
+<li>ENTRY points</li>
+<li>Real and Double precision DO control variables and DO loop control expressions</li>
+<li>INCLUDE statements (use USE statement instead)</li>
+</ul>
+<p>Note: Most items are already covered by other specific EUM rules; this rule serves as a catch-all.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1140,7 +1419,14 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.INST.StringDim</key>
 		<name>EUM.INST.StringDim</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.INST.StringDim</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0870: String dimensions of dummy arguments</h2>
+<p>Dimensions of character string as dummy arguments shall use the LEN attribute and the asterisk (*) to identify the length. This rule applies even to the cases in which the dimension of the character string is known inside the procedure. The use of asterisk (*) rather than a predefined dimension permits that the character string memory is properly passed to the procedure. Checks on the size of the actual calling argument can be performed inside the subroutine if necessary (with LEN and LEN_TRIM). Providing enough memory for the procedure call is caller responsibility.</p>
+<h3>Example</h3>
+<pre>SUBROUTINE name (A)
+  CHARACTER(LEN=*)   :: A     ! OK
+  CHARACTER(LEN=23)  :: A     ! Not OK</pre>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1150,7 +1436,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.MET.MaxArguments</key>
 		<name>EUM.MET.MaxArguments</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.MET.MaxArguments</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-2030: Maximum number of arguments</h2>
+<p>Maximum number of arguments in a procedure shall be 10.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1160,7 +1449,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.MET.MaxAttributes</key>
 		<name>EUM.MET.MaxAttributes</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.MET.MaxAttributes</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-2040: Maximum number of attributes</h2>
+<p>Maximum number of attributes in an abstract type shall be 10.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1170,7 +1462,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.MET.MaxContinuation</key>
 		<name>EUM.MET.MaxContinuation</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.MET.MaxContinuation</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-2050: Maximum number of continuation lines</h2>
+<p>Maximum number of continuation lines shall be 10 (the maximum allowed in the standard is 39).</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1180,7 +1475,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.MET.MaxProcedures</key>
 		<name>EUM.MET.MaxProcedures</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.MET.MaxProcedures</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-2010: Maximum number of procedures per module</h2>
+<p>Maximum number of procedures in a module shall be 20.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1190,7 +1488,14 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.NAME.Constants</key>
 		<name>EUM.NAME.Constants</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.NAME.Constants</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0410: Constants</h2>
+<p>All constants shall contain no lower case characters (except the type indicator when using Hungarian notation) and shall be defined with the PARAMETER attribute.</p>
+<h3>Example</h3>
+<pre>DOUBLE PRECISION, PARAMETER :: TAUCONSTANT = 6.28318530718  ! Simple notation
+
+DOUBLE PRECISION, PARAMETER :: rTAUCONSTANT = 6.28318530718 ! Hungarian notation</pre>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1200,7 +1505,15 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.NAME.FileExt</key>
 		<name>EUM.NAME.FileExt</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.NAME.FileExt</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0150: File extension</h2>
+<p>FORTRAN source files shall have an extension appropriate to the version being used.</p>
+<h3>Example</h3>
+<pre>.f90, F90, f95, F95, .f03...</pre>
+<p>Which extension is to be applied is compiler dependent. For example, gfortran treats F90 source files differently to f90.</p>
+<h3>Implementation</h3>
+<p>This rule checks that the file extension is in the allowed list: <code>.f90</code>, <code>.F90</code>, <code>.f95</code>, <code>.F95</code>, <code>.f03</code>, <code>.F03</code>. Any other extension is flagged.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1210,7 +1523,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.NAME.FormatLabels</key>
 		<name>EUM.NAME.FormatLabels</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.NAME.FormatLabels</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1710: FORMAT labels</h2>
+<p>Labels for FORMAT statements shall start at 1000 and increase by 10 for each statement.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1220,7 +1536,17 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.NAME.IdChars</key>
 		<name>EUM.NAME.IdChars</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.NAME.IdChars</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0320: Identifier Characters</h2>
+<p>Identifiers shall consist only of the following characters:</p>
+<ul>
+<li>Upper case alphabetic letters [A...Z]</li>
+<li>Lower case alphabetic letters [a...z]</li>
+<li>Digits [0...9]</li>
+<li>Underscore character</li>
+</ul>
+<p>FORTRAN compilers do not distinguish between upper and lower case. Case should be used to aid the readability of the names but cannot be used as the only difference between variable names.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1230,7 +1556,46 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.NAME.IdFormat</key>
 		<name>EUM.NAME.IdFormat</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.NAME.IdFormat</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0370: Identifiers format</h2>
+<p>Identifiers shall be defined as <code>[scope_][type]&lt;name&gt;</code> where:</p>
+<ul>
+<li><code>[scope_]</code> This is a module identification key plus an underscore. This shall be omitted for identifiers which are local to a subroutine or function. It shall use the following convention:
+<table>
+<tr><th>Keyword</th><th>Scope</th></tr>
+<tr><td>AAbb_</td><td>For public MODULE variables</td></tr>
+<tr><td>bb_</td><td>For private MODULE variables</td></tr>
+<tr><td>N/A</td><td>For local to a subroutine or function</td></tr>
+</table>
+Where the upper-case letters (AA) identify uniquely the library on which the module is located, and the lower-case letters (bb) identify uniquely the module inside the library.</li>
+<li><code>[type]</code> Only when using Hungarian notation. It contains one or more lower case letters that identify the type of variable with the following convention, and in the specified order. This is omitted for MODULEs and Functions/Subroutines.
+<table>
+<tr><th>Prefix</th><th>Type</th><th>Comment</th></tr>
+<tr><td>c</td><td>Character</td><td></td></tr>
+<tr><td>i</td><td>Integer</td><td></td></tr>
+<tr><td>r</td><td>Real / Double precision</td><td></td></tr>
+<tr><td>x</td><td>Complex</td><td></td></tr>
+<tr><td>l</td><td>Logical</td><td></td></tr>
+<tr><td>t</td><td>Type (Structure)</td><td></td></tr>
+<tr><td>a</td><td>Array</td><td>It can be used in combination with other prefixes.</td></tr>
+<tr><td>p</td><td>Pointer</td><td>It can be used in combination with other prefixes.</td></tr>
+</table>
+</li>
+<li><code>&lt;name&gt;</code> Is a meaningful name. It shall:
+<ul>
+<li>contain only capital letters for constants (e.g. SOMECONSTANT) or</li>
+<li>use CamelCase format, starting always with uppercase, for the rest of identifiers (e.g. LoopCounter).</li>
+</ul>
+Underscore characters shall not be used in function or variable meaningful names.</li>
+</ul>
+<h3>Example</h3>
+<pre>ORbt_iLoopCounter: Integer in the Orbit module.
+                   Public MODULE variable
+es_arQuaternion:   Array of Real in the Attitude Estimation module.
+                   Private MODULE variable
+iNumClouds:        Integer counter of number of clouds. Local variable.
+iTAUCONSTANT:      Integer constant. Local variable</pre>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1240,7 +1605,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.NAME.IdLength</key>
 		<name>EUM.NAME.IdLength</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.NAME.IdLength</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0330: Identifier Length</h2>
+<p>A limitation of 32 characters shall be imposed on all identifier names.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1250,7 +1618,18 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.NAME.IdScope</key>
 		<name>EUM.NAME.IdScope</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.NAME.IdScope</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0400: Identifiers format scope</h2>
+<p>Identifiers format shall apply to:</p>
+<ul>
+<li>Modules</li>
+<li>Functions/subroutines</li>
+<li>Variables</li>
+<li>Types and structures</li>
+</ul>
+<h3>Implementation</h3>
+<p>This is a meta-rule ensuring that EUM.NAME.IdFormat applies to Modules, Functions/subroutines, Variables, and Types/structures. It is implemented as part of the EUM.NAME.IdFormat checker.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1260,7 +1639,20 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.NAME.ModuleName</key>
 		<name>EUM.NAME.ModuleName</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.NAME.ModuleName</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0130: MODULE names</h2>
+<p>The name of the MODULE shall follow the format AAbb_Name. Where:</p>
+<ul>
+<li>The two upper-case letters (AA) shall identify uniquely the library on which the module is located.</li>
+<li>The lower-case letters (bb) shall identify uniquely the module inside the library.</li>
+<li>Name shall be a meaningful identifier, using CamelCase notation.</li>
+</ul>
+<h3>Example</h3>
+<p>File CLvi_CloudVisualization.f90</p>
+<pre>MODULE CLvi_CloudVisualization
+...
+END MODULE</pre>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1270,7 +1662,12 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.NAME.PrivateFormat</key>
 		<name>EUM.NAME.PrivateFormat</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.NAME.PrivateFormat</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0390: Private elements format</h2>
+<p>All elements in the module scope (PRIVATE) should be only prefixed with the module identification, followed by an underscore.</p>
+<h3>Example</h3>
+<pre>mm_myModuleConstant</pre>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1280,7 +1677,15 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.NAME.ProgramName</key>
 		<name>EUM.NAME.ProgramName</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.NAME.ProgramName</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0120: PROGRAM names</h2>
+<p>The name of the PROGRAM shall be a meaningful identifier, using CamelCase notation.</p>
+<h3>Example</h3>
+<p>File Orbit.f90</p>
+<pre>PROGRAM Orbit
+...
+END PROGRAM</pre>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1290,7 +1695,12 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.NAME.PublicFormat</key>
 		<name>EUM.NAME.PublicFormat</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.NAME.PublicFormat</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0380: Public elements format</h2>
+<p>All PUBLIC elements within a module should be prefixed in the same manner as the module they belong to.</p>
+<h3>Example</h3>
+<pre>LLmm_iMyPublicVariable</pre>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1300,7 +1710,12 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.PRES.BlankLines</key>
 		<name>EUM.PRES.BlankLines</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.PRES.BlankLines</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0610: Blank lines</h2>
+<p>Blank lines shall be placed wherever they improve the appearance and layout of the code.</p>
+<h3>Implementation</h3>
+<p>This rule checks that there are no more than 2 consecutive blank lines.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1310,7 +1725,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.PRES.BlockAlign</key>
 		<name>EUM.PRES.BlockAlign</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.PRES.BlockAlign</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0240: Control blocks justification</h2>
+<p>Control blocks shall be properly aligned. DO and END DO starting at the same column and the lines in between consistently indented to the right.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1320,7 +1738,23 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.PRES.CommentBlock</key>
 		<name>EUM.PRES.CommentBlock</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.PRES.CommentBlock</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0590: Comment blocks</h2>
+<p>Comment blocks shall be placed at the start of blocks of calculations.</p>
+<p>Comment blocks are one or more lines of text. They should typically be placed at the start of blocks of calculations, DO ... END DO loops, or larger IF ... END IF constructs. They should also be included wherever they will serve to clarify some lines of code.</p>
+<h3>Example</h3>
+<pre>!  Check all plates are within dimension limits
+   lDimsok = .TRUE.
+   DO iLoop = 1, iNumPlates
+      rXpos = arCoord (1,iLoop)
+      rYpos = arCoord (2,iLoop)
+      rZpos = arCoord (3,iLoop)
+      CALL CheckDim (rXpos, rZpos, lDimsok)
+   END DO
+!  iDimsok is now false if limits were exceeded.</pre>
+<h3>Implementation</h3>
+<p>This rule flags big (5 or more lines) IF/DO constructs that are not preceded by a comment. Smaller constructs (1 line or less) are skipped.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1330,7 +1764,20 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.PRES.CommentPos</key>
 		<name>EUM.PRES.CommentPos</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.PRES.CommentPos</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0520: Comment positions</h2>
+<p>Comments shall be placed at the following positions:</p>
+<ul>
+<li>At the beginning of each iterative process or loop, as described by EUM-FCRule-0590.</li>
+<li>Preceding a series of lines of code that make a clearly defined function</li>
+<li>Preceding any logical process (IF, WHERE, SELECT CASE...)</li>
+<li>Before calling a subroutine or function</li>
+<li>Preceding any sentence or block of sentences for reading and writing</li>
+<li>Declaration of variables (grouped by related functionality), as described by EUM-FCRule-0600.</li>
+</ul>
+<h3>Implementation</h3>
+<p>This rule flags IF/DO/SELECT CASE/CALL/READ/WRITE statements not preceded by a comment line. Single-line comments count. Nearby violations are grouped to reduce noise.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1340,7 +1787,15 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.PRES.Doxygen</key>
 		<name>EUM.PRES.Doxygen</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.PRES.Doxygen</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0580: Doxygen comments</h2>
+<p>Doxygen comment codes should be used when declaring a function.</p>
+<h3>Example</h3>
+<pre>!&gt; comment preceding function
+  FUNCTION XXmm_MyFunction( x ) RESULT( res )</pre>
+<h3>Implementation</h3>
+<p>This rule checks that <code>!&gt;</code> is used before function declarations. The <code>!&lt;</code> notation is NOT allowed.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1350,7 +1805,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.PRES.IndentLevel</key>
 		<name>EUM.PRES.IndentLevel</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.PRES.IndentLevel</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0220: Indentation level</h2>
+<p>Each level of indentation shall consist of two blank spaces.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1360,7 +1818,12 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.PRES.LabelJustify</key>
 		<name>EUM.PRES.LabelJustify</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.PRES.LabelJustify</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0230: Labels justification</h2>
+<p>Labels shall be left justified to the same column to facilitate the browsing.</p>
+<h3>Implementation</h3>
+<p>This rule checks that all labels (statement numbers like 1000, 100) start at column 1.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1370,7 +1833,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.PRES.NoCommentMultiLine</key>
 		<name>EUM.PRES.NoCommentMultiLine</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.PRES.NoCommentMultiLine</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0550: No comments between multi-line sentences</h2>
+<p>Comments shall not be inserted between sentences that are constituted by more than a line (with continuation lines).</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1380,7 +1846,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.PRES.NoEmptyComment</key>
 		<name>EUM.PRES.NoEmptyComment</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.PRES.NoEmptyComment</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0570: Do not use empty comment lines</h2>
+<p>Empty comment lines shall not be used. Use empty lines instead.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1390,7 +1859,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.PRES.NoEndLineComment</key>
 		<name>EUM.PRES.NoEndLineComment</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.PRES.NoEndLineComment</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0560: Do not use end-of-line comments</h2>
+<p>End-of-line comments (comments at the end of code lines) shall not be used.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1400,7 +1872,10 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.PRES.NoTabs</key>
 		<name>EUM.PRES.NoTabs</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.PRES.NoTabs</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0210: No TABS</h2>
+<p>The TAB character shall not be used. Use blank characters for indentation and spacing instead.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1410,7 +1885,26 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.PROJECT.HeaderContent</key>
 		<name>EUM.PROJECT.HeaderContent</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.PROJECT.HeaderContent</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-0510: Subroutines and function header</h2>
+<p>Each programming function or subroutine shall have a header with the following components:</p>
+<ul>
+<li>Routine name</li>
+<li>Purpose of the routine</li>
+<li>Description of the input/output argument</li>
+<li>Description of the value returned</li>
+</ul>
+<h3>Example</h3>
+<pre>!-------------------------------------------------------------------------------
+! Name: function name
+! Purpose: brief description of the purpose of the function
+! Argument I/O: input/output arguments and affected global data with a brief
+!               explanation of their meaning
+! Returns: a brief explanation of the meaning of the returned value
+!-------------------------------------------------------------------------------</pre>
+<h3>Implementation</h3>
+<p>This rule validates that the procedure header contains the required fields: Name, Purpose, Argument I/O, and Returns.</p>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
@@ -1420,7 +1914,17 @@ Please, report this error to i-Code CNES maintainers to improve the tool: <a hre
 		<key>EUM.TYPE.PrivateInType</key>
 		<name>EUM.TYPE.PrivateInType</name>
 		<internalKey>*</internalKey>
-		<description>EUM Fortran Coding Rule: EUM.TYPE.PrivateInType</description>
+		<description><![CDATA[
+<h2>EUM-FCRule-1160: Abstract Types Declaration</h2>
+<p>Abstract types shall always contain the PRIVATE statement.</p>
+<p>This is a good Object-Oriented practice to avoid incorrect set/get of the data.</p>
+<h3>Example</h3>
+<pre>TYPE AAbb_tStateVector
+  PRIVATE
+  DOUBLE PRECISION :: rEpoch
+  DOUBLE PRECISION, DIMENSION(6) :: daData
+END TYPE AAbb_tStateVector</pre>
+]]></description>
 		<severity>INFO</severity>
 		<status>READY</status>
 		<type>CODE_SMELL</type>
